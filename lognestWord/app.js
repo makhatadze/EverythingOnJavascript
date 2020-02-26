@@ -1,14 +1,23 @@
-let longestWord = (str) => {
-    let words = str.split(" ");
-    let longestWord = '';
+// Longest Words
 
-    for(let word of words) {
-       if(word.length>longestWord.length) {
-           longestWord = word
-       }
+let longestWords = (str) => {
+    let words = str.split(' ');
+    let size = 0;
+    let max = [''];
+    for(let i = 0; i<words.length; i++) {
+        if (words[i].length>=size){
+            size = words[i].length
+            if(max[max.length-1].length<words[i].length) {
+                max = [];
+                max.push(words[i])
+            }
+            else {
+                max = [...max,words[i]]
+            }
+        }
     }
 
-    return longestWord;
+    return [...max];
 }
 
-console.log(longestWord("tes test t test1111"))
+console.log(longestWords("tes test t tess"))
